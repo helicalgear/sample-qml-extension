@@ -6,7 +6,7 @@ Window {
     visible: true
     width: 480
     height: 240
-    title: qsTr("Hello World")
+    title: qsTr("東京の天気")
 
     JsonListModel {
         id: jsonListModel
