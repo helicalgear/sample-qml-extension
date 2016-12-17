@@ -4,14 +4,14 @@ import JsonListModel 1.0
 
 Window {
     visible: true
-    width: 640
-    height: 480
+    width: 480
+    height: 240
     title: qsTr("Hello World")
 
     JsonListModel {
         id: jsonListModel
         role: "forecasts"
-        jrole: new Array("dateLabel", "telop")
+        jrole: new Array("dateLabel", "telop", "image", "temperature")
     }
 
     ListView {
@@ -20,12 +20,53 @@ Window {
 
         model: jsonListModel
 
-        delegate: Text {
+        delegate: Rectangle {
             width: parent.width
-            height: 30
-
-            text: "%1: %2".arg(dateLabel).arg(telop)
+            height: 72
+            border.color: "#FF000000"
+            border.width: 1
+            radius: 5
+            Row {
+                anchors.fill: parent
+                padding: 2
+                Text {
+                    width: parent.width / 3
+                    height: parent.height
+                    font.pixelSize: 24
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    text: dateLabel
+                }
+                Column {
+                    width: parent.width / 3
+                    Image {
+                        width: 48
+                        height: 48
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        fillMode: Image.PreserveAspectFit
+                        source: image.url
+                    }
+                    Text {
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        font.pixelSize: 16
+                        horizontalAlignment: Text.AlignHCenter
+                        text: telop
+                    }
+                }
+                Column {
+                    width: parent.width / 3
+                    anchors.verticalCenter: parent.verticalCenter
+                    Text {
+                        text: "最高気温 %1℃".arg(temperature.max.celsius)
+                    }
+                    Text {
+                        text: "最低気温 %1℃".arg(temperature.min.celsius)
+                    }
+                }
+            }
         }
+
+
     }
 
     function getWeather() {
