@@ -20,7 +20,7 @@ void JsonListModel::setJsonText(const QString &jsonText)
     m_jsonText = jsonText;
     QJsonDocument jsonDoc = QJsonDocument::fromJson(m_jsonText.toUtf8());
     QJsonObject jsonObj = jsonDoc.object();
-    QJsonArray jsonArray = jsonObj[m_role].toArray();
+    QJsonArray jsonArray = jsonObj[m_query].toArray();
     foreach (const QJsonValue & value, jsonArray) {
         QJsonObject obj = value.toObject();
         QHash<int, QVariant> jsonData;
@@ -33,14 +33,14 @@ void JsonListModel::setJsonText(const QString &jsonText)
     }
 }
 
-QString JsonListModel::role() const
+QString JsonListModel::query() const
 {
-    return m_role;
+    return m_query;
 }
 
-void JsonListModel::setRole(const QString &role)
+void JsonListModel::setQuery(const QString &query)
 {
-    m_role = role;
+    m_query = query;
 }
 
 QStringList JsonListModel::jrole() const

@@ -10,7 +10,7 @@ Window {
 
     JsonListModel {
         id: jsonListModel
-        role: "forecasts"
+        query: "forecasts"
         jrole: new Array("dateLabel", "telop", "image", "temperature")
     }
 
@@ -57,7 +57,7 @@ Window {
                     width: parent.width / 3
                     anchors.verticalCenter: parent.verticalCenter
                     Text {
-                        text: "最高気温 %1℃".arg(temperature.max.celsius)
+                        text:  "最高気温 %1℃".arg(temperature.max.celsius)
                     }
                     Text {
                         text: "最低気温 %1℃".arg(temperature.min.celsius)
@@ -65,7 +65,6 @@ Window {
                 }
             }
         }
-
 
     }
 
