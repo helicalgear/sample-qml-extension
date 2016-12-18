@@ -11,7 +11,7 @@ Window {
     JsonListModel {
         id: jsonListModel
         query: "forecasts"
-        jrole: new Array("dateLabel", "telop", "image", "temperature")
+        roles: new Array("dateLabel", "telop", "image", "temperature")
     }
 
     ListView {

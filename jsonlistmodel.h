@@ -8,7 +8,7 @@ class JsonListModel : public QAbstractListModel
     Q_OBJECT
     Q_PROPERTY(QString jsonText READ jsonText WRITE setJsonText)
     Q_PROPERTY(QString query READ query WRITE setQuery)
-    Q_PROPERTY(QStringList jrole READ jrole WRITE setJrole)
+    Q_PROPERTY(QStringList roles READ roles WRITE setRoles)
 
 public:
     //
@@ -20,15 +20,15 @@ public:
     void setJsonText(const QString &jsonText);
     QString query() const;
     void setQuery(const QString &query);
-    QStringList jrole() const;
-    void setJrole(const QStringList &jrole);
+    QStringList roles() const;
+    void setRoles(const QStringList &roles);
     //
     explicit JsonListModel(QObject *parent = 0);
 
 private:
     QString m_jsonText;
     QString m_query;
-    QStringList m_jrole;
+    QStringList m_roles;
     QList<QHash<int, QVariant>> m_jsonList;
 };
 

@@ -25,8 +25,8 @@ void JsonListModel::setJsonText(const QString &jsonText)
         QJsonObject obj = value.toObject();
         QHash<int, QVariant> jsonData;
         beginInsertRows(QModelIndex(), m_jsonList.size(), m_jsonList.size());
-        for ( int i = 0; i < m_jrole.size(); i++ ) {
-            jsonData.insert(i, obj[m_jrole[i]].toVariant());
+        for ( int i = 0; i < m_roles.size(); i++ ) {
+            jsonData.insert(i, obj[m_roles[i]].toVariant());
         }
         m_jsonList.append(jsonData);
         endInsertRows();
@@ -43,14 +43,14 @@ void JsonListModel::setQuery(const QString &query)
     m_query = query;
 }
 
-QStringList JsonListModel::jrole() const
+QStringList JsonListModel::roles() const
 {
-    return m_jrole;
+    return m_roles;
 }
 
-void JsonListModel::setJrole(const QStringList &jrole)
+void JsonListModel::setRoles(const QStringList &roles)
 {
-    m_jrole = jrole;
+    m_roles = roles;
 }
 
 //
@@ -63,8 +63,8 @@ int JsonListModel::rowCount(const QModelIndex &) const
 QHash<int, QByteArray> JsonListModel::roleNames() const
 {
     QHash<int, QByteArray> ret;
-    for ( int i = 0; i < m_jrole.size(); i++ ) {
-        ret.insert(i, m_jrole[i].toUtf8());
+    for ( int i = 0; i < m_roles.size(); i++ ) {
+        ret.insert(i, m_roles[i].toUtf8());
     }
     return ret;
 }
