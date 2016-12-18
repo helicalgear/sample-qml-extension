@@ -75,7 +75,7 @@ Window {
             if (xhr.readyState === 4) {
                 switch (xhr.status) {
                 case 200:
-                    jsonListModel.jsonText = xhr.responseText;
+                    jsonListModel.json = xhr.responseText;
                     break;
                 default:
                     console.debug("Something wrong to get the Weather data.");

@@ -1,4 +1,3 @@
-#include <QDebug>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
@@ -10,15 +9,15 @@ JsonListModel::JsonListModel(QObject *parent) : QAbstractListModel(parent)
 
 //
 
-QString JsonListModel::jsonText() const
+QString JsonListModel::json() const
 {
-    return m_jsonText;
+    return m_json;
 }
 
-void JsonListModel::setJsonText(const QString &jsonText)
+void JsonListModel::setJson(const QString &json)
 {
-    m_jsonText = jsonText;
-    QJsonDocument jsonDoc = QJsonDocument::fromJson(m_jsonText.toUtf8());
+    m_json = json;
+    QJsonDocument jsonDoc = QJsonDocument::fromJson(m_json.toUtf8());
     QJsonObject jsonObj = jsonDoc.object();
     QJsonArray jsonArray = jsonObj[m_query].toArray();
     foreach (const QJsonValue & value, jsonArray) {
