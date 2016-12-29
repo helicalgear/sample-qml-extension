@@ -57,10 +57,10 @@ Window {
                     width: parent.width / 3
                     anchors.verticalCenter: parent.verticalCenter
                     Text {
-                        text: "最高気温：%1".arg(defined(temperature.max.celsius) ? temperature.max.celsius : "---")
+                        text: "最高気温：%1℃".arg(defined(temperature.max)&&defined(temperature.max.celsius) ? temperature.max.celsius : "---")
                     }
                     Text {
-                        text: "最低気温：%1".arg(defined(temperature.min.celsius) ? temperature.min.celsius : "---")
+                        text: "最低気温：%1℃".arg(defined(temperature.min)&&defined(temperature.min.celsius) ? temperature.min.celsius : "---")
                     }
                 }
             }
