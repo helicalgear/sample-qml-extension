@@ -57,15 +57,14 @@ Window {
                     width: parent.width / 3
                     anchors.verticalCenter: parent.verticalCenter
                     Text {
-                        text:  "最高気温 %1℃".arg(temperature.max.celsius)
+                        text: "最高気温：%1".arg(defined(temperature.max.celsius) ? temperature.max.celsius : "---")
                     }
                     Text {
-                        text: "最低気温 %1℃".arg(temperature.min.celsius)
+                        text: "最低気温：%1".arg(defined(temperature.min.celsius) ? temperature.min.celsius : "---")
                     }
                 }
             }
         }
-
     }
 
     function getWeather() {
@@ -85,6 +84,8 @@ Window {
         }
         xhr.send();
     }
+
+    function defined(obj) { return typeof obj !== 'undefined' }
 
     Component.onCompleted: getWeather()
 }
